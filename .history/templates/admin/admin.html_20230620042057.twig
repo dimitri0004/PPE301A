@@ -1,0 +1,100 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<body class="login-page authentication">
+    <div class="container">
+        <div class="card-top"></div>
+        <div class="card">
+            <h1 class="title"><span>Swift University</span>Register <span class="msg">Register a new membership</span></h1>
+            <div class="col-sm-12">
+                               
+                    {% if form_errors(registrationForm.confirmPassword) %}
+                        <div class="alert alert-danger">
+                            {{ form_errors(registrationForm.confirmPassword) }}
+                        </div>
+                    {% endif %}
+                                
+                    <div style="color: red;">
+                        {{ form_errors(registrationForm) }}
+                    </div>
+                    {{ form_start(registrationForm) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.fonction, {'attr':{'type':"username",' class':"form-control",'label':'Username"' ,'placeholder':"username"}}) }}                                 
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
+                                    <div class="form-line" >
+                                        {{ form_row(registrationForm.username, {'attr':{'type':"username",' class':"form-control", 'label':'Username"' ,'placeholder':"username"}}) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.admin, {'attr':{'type':"username",' class':"form-control",'label':'Username"' ,'placeholder':"admin"}}) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-email"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.email, {'attr':{'type':"email",' class':"form-control",'label':'Email' ,'placeholder':"hello@example.com"}}) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-lock"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.plainPassword, {'attr':{'type':"password",' class':"form-control",'label':'Password', 'placeholder':"***********"}}, {
+                                            label: 'Password'
+                                        }) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-lock"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.confirmPassword, {'attr':{'type':"password",' class':"form-control" ,'placeholder':"*************"}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group" style="color: black;">
+                                    
+                                    {{ form_row(registrationForm.agreeTerms) }}
+                                    
+                                </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-raised g-bg-blush2 waves-effect" >SIGN UP</button>
+                                </div>
+                               
+
+                                <div class="new-account mt-3">
+                                    <p>Already have an account? <a class="text-primary" href="{{ path('app_login') }}">Sign in</a></p>
+                                </div>  
+                                 
+                    {{ form_end(registrationForm) }}
+                    
+            </div>
+        </div>  
+    </div>               
+                    
+<div class="theme-bg"></div>
+            
+
+    
+</body>
+{% endblock %}

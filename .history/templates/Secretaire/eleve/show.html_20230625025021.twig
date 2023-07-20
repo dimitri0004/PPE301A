@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Eleve{% endblock %}
+
+{% block body %}
+    <h1>Eleve</h1>
+
+    <table class="table">
+        <tbody>
+
+            <th scope="row">{{ loop.index }}</th>
+                                            
+                                            <td>{{ eleve.anne.code }}</td>
+                                            <td>{{ eleve.classe.libelle }}</td>
+                                            <td>{{ eleve.nom }}</td>
+                                            <td>{{ eleve.prenom }}</td>
+                                            <td>{{ eleve.email }}</td>
+                                            <td>{{ eleve.username }}</td>
+                                            <td>{{ eleve.security }}</td>
+                                            <td>{{ eleve.sexe }}</td>
+
+                                            <td>{{ eleve.numero }}</td>
+                                            <div class="col-sm-12" >
+            <tr>
+                <th>IMage</th>
+                <td><td><img class="bd-placeholder-img rounded-circle" src="{{ asset('images/users/') ~ eleve.imageName  }}" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></img></td></td>
+            </tr>
+            <tr>
+                <th>Annee Inscription</th>
+                <td>{{ eleve.annee.code }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ eleve.classe }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ eleve.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ eleve.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ eleve.email }}</td>
+            </tr>
+            <tr>
+                <th>UserName</th>
+                <td>{{ eleve.username }}</td>
+            </tr>
+            <tr>
+                <th>Eleve.password</th>
+                <td>{{ eleve.security }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td><button class="btn bg-orange waves-effect" type="button">{{ eleve.fonction }} </td> 
+            </tr>
+            <tr>
+                <th>Date Naissance</th>
+                <td>{{ eleve.dateNaissance|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Lieu Naissance</th>
+                <td>{{ eleve.Lieu Naissance}}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ eleve.adress }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ eleve.sexe }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ eleve.description }}</td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_eleve_index') }}">back to list</a>
+
+    <a href="{{ path('app_eleve_edit', {'id': eleve.id}) }}">edit</a>
+
+    {{ include('eleve/_delete_form.html.twig') }}
+{% endblock %}

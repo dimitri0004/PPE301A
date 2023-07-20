@@ -1,0 +1,109 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<body class="login-page authentication">
+    <div class="container">
+        <div class="card-top"></div>
+        <div class="card">
+            <h1 class="title"><span>Swift University</span>Register <span class="msg">Register a new membership</span></h1>
+            <div class="col-sm-12">
+                               
+                    {% if form_errors(registrationForm.confirmPassword) %}
+                        <div class="alert alert-danger">
+                            {{ form_errors(registrationForm.confirmPassword) }}
+                        </div>
+                    {% endif %}
+                                
+                    <div style="color: red;">
+                        {{ form_errors(registrationForm) }}
+                    </div>
+                    {{ form_start(registrationForm) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
+                                    <div class="form-line" >
+                                        {{ form_row(registrationForm.username, {'attr':{'type':"username",' class':"form-control", 'label':'Username"' ,'placeholder':"username"}}) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-email"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.email, {'attr':{'type':"email",' class':"form-control",'label':'Email' ,'placeholder':"hello@example.com"}}) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-lock"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.plainPassword, {'attr':{'type':"password",' class':"form-control",'label':'Password', 'placeholder':"***********"}}, {
+                                            label: 'Password'
+                                        }) }}
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="zmdi zmdi-lock"></i>
+                                    </span>
+                                    <div class="form-line">
+                                        {{ form_row(registrationForm.confirmPassword, {'attr':{'type':"password",' class':"form-control" ,'placeholder':"*************"}}) }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-pink">
+                                    <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-12 col-sm-12">
+                                      
+                                        <div class="card mt-2 " style="height: 200px; margin-left: 300px; border-radius: 5%; "  >
+                                        
+                                            <div class="body">
+       
+                                                    <center>
+                                                    <div class="fallback" style="color: blue;">
+                                                        {{ form_row(registrationForm.imageFile, {'attr':{'class':"form-control-file" }}) }}
+                                                    </div>
+                                                    </center>
+                                                
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="form-check">
+                                   
+                                    {{ form_row(registrationForm.agreeTerms, { 'attr': {'class':"form-check-input", 'type':"checkbox"} }) }}
+                                    
+                                </div>
+
+                                
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-raised g-bg-blush2 waves-effect" >SIGN UP</button>
+                                </div>
+                               
+
+                                <div class="new-account mt-3">
+                                    <p>Already have an account? <a class="text-primary" href="{{ path('app_login') }}">Sign in</a></p>
+                                </div>  
+                                 
+                    {{ form_end(registrationForm) }}
+                    
+            </div>
+        </div>  
+    </div>               
+                    
+<div class="theme-bg"></div>
+            
+
+    
+</body>
+{% endblock %}

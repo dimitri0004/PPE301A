@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="authincation h-100">
+    <div class="container h-100">
+        <div class="row justify-content-center h-100 align-items-center">
+            <div class="col-md-6">
+                <div class="authincation-content">
+                    <div class="row no-gutters">
+                        <div class="col-xl-12">
+                            <div class="auth-form">
+                                <h4 class="text-center mb-4">Sign up your account</h4>
+                               
+                                {% if form_errors(registrationForm.confirmPassword) %}
+                                    <div class="alert alert-danger">
+                                        {{ form_errors(registrationForm.confirmPassword) }}
+                                    </div>
+                                {% endif %}
+                                
+                                <div class="danger">
+                                    {{ form_errors(registrationForm) }}
+                                </div>
+
+                                {{ form_start(registrationForm) }}
+                                        <label><strong>Username</strong></label>
+                                    {{ form_row(registrationForm.fonction, {'attr':{'type':"username",' class':"form-control",'label':'Username"' ,'placeholder':"username"}}) }}                                 
+                                    {{ form_row(registrationForm.username, {'attr':{'type':"username",' class':"form-control",'label':'Username"' ,'placeholder':"username"}}) }}                                   
+                                    {{ form_row(registrationForm.email, {'attr':{'type':"email",' class':"form-control",'label':'Email' ,'placeholder':"hello@example.com"}}) }}
+                                    {{ form_row(registrationForm.plainPassword, {'attr':{'type':"password",' class':"form-control",'label':'Password', 'placeholder':"***********"}}, {
+                                        label: 'Password'
+                                    }) }}
+                                    {{ form_row(registrationForm.confirmPassword, {'attr':{'type':"password",' class':"form-control" ,'placeholder':"*************"}}) }}
+                                    {{ form_row(registrationForm.agreeTerms) }}
+                                    <div class="text-center mt-4">
+                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                    </div>    
+                                {{ form_end(registrationForm) }}
+                                <div class="new-account mt-3">
+                                    <p>Already have an account? <a class="text-primary" href="{{ path('app_login') }}">Sign in</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

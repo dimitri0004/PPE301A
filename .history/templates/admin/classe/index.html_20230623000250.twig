@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classe index{% endblock %}
+
+{% block body %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>ALL DEPARTMENTS</h2>
+            <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
+        </div>
+        
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>All Directeur </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more-vert"></i> </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <a type="button" href="{{ path('admin_classe_ajouter') }}" class="btn btn-raised btn-primary waves-effect" style="margin-left:80%">+Ajouter une Classe</a>
+        
+                    <div class="body table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Code</th>
+                                    <th>Libelle</th>
+                                    <th>actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for classe in classes %}
+                                <tr>
+                                    <td>{{ classe.id }}</td>
+                                    <td>{{ classe.code }}</td>
+                                    <td>{{ classe.libelle }}</td>
+                                    <td>
+                                        <a href="{{ path('admin_classe_show', {'id': classe.id}) }}">show</a>
+                                        <a href="{{ path('admin_classe_modifier', {'id': classe.id}) }}">edit</a>
+                                        {{ include('admin/salle/_delete_form.html.twig') }}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="4">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+
+                        
+{% endblock %}

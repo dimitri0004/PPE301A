@@ -1,0 +1,36 @@
+{{ form_start(form ,{'attr':{'class':'body'}})}}
+<div class="row clearfix">
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                {{ form_row(form.code, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"code clase" , 'require':""}}) }}
+            </div>
+        </div>
+    </div>
+     
+</div>
+<div class="row clearfix" >
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                &nbsp; {{ form_row(form.libelle, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row clearfix" >
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                &nbsp; {{ form_row(form.Professeur, {'attr':{'class':"form-control" , 'placeholder':"professeur",'require':""}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-raised g-bg-blush2">{{ button_label|default('submit') }}</button>
+        <a href="{{ path('admin_classe_matiere') }}" class="btn btn-raised btn-default">Cancel</a>
+    </div>
+
+    
+{{ form_end(form) }}

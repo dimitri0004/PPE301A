@@ -1,0 +1,210 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter Directeurs{% endblock %}
+
+{% block body %}
+
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+   
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <h2>Add Professor</h2>
+                <small class="text-muted">Welcome to Swift application</small>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>Basic Information <small>Description text here...</small> </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                                        <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                               <a href="{{ path('directeur_liste') }}" class="btn btn-warning">Liste Des Autres Employer</a>
+                               {% if form_errors(form.security) %}
+                                    <div class="alert alert-danger">
+                                    {{ form_errors(form.security) }}
+                                </div>
+                                {% endif %}
+                                    {{ form_start(form, {'attr':{'class':'body'}})}}
+                               
+
+                                    <div class="row clearfix">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    {{ form_row(form.fonction, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"fonction" , 'require':""}}) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    {{ form_row(form.nom, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"nom" , 'require':""}}) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    {{ form_row(form.prenom, {'attr':{'class':"form-control" ,'placeholder':"prenom" ,'require':"", 'label':'Prenom*'}}) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.email, {'attr':{'class':"form-control", 'placeholder':"exemple@gmail.com", 'require':"", 'label':'Email*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.numero, {'attr':{'class':"form-control", 'placeholder':"numero", 'require':"", 'label':'Numero*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+
+                                        <div class="row clearfix">
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.username, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"username" , 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.plainPassword, {'attr':{'class':"form-control" ,'placeholder':"***********" ,'require':"", 'label':'Prenom*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.security, {'attr':{'class':"form-control" ,'placeholder':"***********" ,'require':"", 'label':'ConfirmPassword*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.dateNaissance, {'attr':{'class':'datepicker form-control', 'require':"", 'label':'Date Naissance*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.lieuNaissance, {'attr':{'class':"form-control", 'placeholder':"Lieu Naisance", 'require':"", 'label':'Lieu Naissance*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.Domaine, {'attr':{'class':"form-control" ,'placeholder':"domain", 'require':"", 'label':'Domaine*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group drop-custum"> 
+                                                        {{ form_row(form.diplome, {'attr':{'class':"form-control show-tick" , 'require':"", 'label':'Diplom*'}}) }}
+                                                </div>        
+                                            </div>
+                                        </div>  
+                                        
+
+
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.sexe, {'attr':{ 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.adress, {'attr':{'class':"form-control",'placeholder':"adress", 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>    
+                                        <div class="row clearfix">    
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.imageName, {'attr':{'class':"form-control-file" }}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.Description, {'attr':{'class':"form-control", 'placeholder':"Description", 'require':"", 'label':'Description*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="card">
+                                                    
+                                                    <div class="body">
+                                                        <form action="https://thememakker.com/" id="frmFileUpload" class="dropzone" method="post" enctype="multipart/form-data">
+                                                            <div class="dz-message">
+                                                                <div class="drag-icon-cph"> <i class="material-icons">touch_app</i> </div>
+                                                                <h3>Drop files here or click to upload.</h3>
+                                                                <em>(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</em> </div>
+                                                            <div class="fallback">
+                                                                <input name="file" type="file" multiple />
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-raised g-bg-blush2">Submit</button>
+                                            <button type="submit" class="btn btn-raised btn-default">Cancel</button>
+                                        </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+        <!--***********
+    
+
+{% endblock %}

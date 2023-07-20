@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="card-top"></div>
+    <div class="card">
+        <h1 class="title"><span>Swift University</span>Login <span class="msg">Sign in to start your session</span></h1>
+        <div class="col-sm-12">
+
+
+
+            <form id="sign_in" method="post">
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                    <div class="form-line">
+                        <input type="email" value="{{ last_username }}" class="form-control" name="email" placeholder="email" required autofocus>
+                    </div>
+                </div>
+                <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-lock"></i> </span>
+                    <div class="form-line">
+                        <input type="password" class="form-control" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="">
+                    <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                    <label for="rememberme">Remember Me</label>
+                </div>
+                <div class="text-center">
+                    <a href="index.html" class="btn btn-raised waves-effect g-bg-blush2" >SIGN IN</a>
+                    <a href="sign-up.html" class="btn btn-raised waves-effect" >SIGN UP</a>
+                </div>
+                <div class="text-center"> <a href="forgot-password.html">Forgot Password?</a></div>
+                <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+                                    >
+            </form>    
+                                   
+                                    <div class="new-account mt-3">
+                                        <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
+                                    </div>
+
+                                       
+
+
+                                        {#
+                                            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                                            See https://symfony.com/doc/current/security/remember_me.html
+
+                                            <div class="checkbox mb-3">
+                                                <label>
+                                                    <input type="checkbox" name="_remember_me"> Remember me
+                                                </label>
+                                            </div>
+                                        #}
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

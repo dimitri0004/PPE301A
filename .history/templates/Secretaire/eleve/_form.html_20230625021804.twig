@@ -1,0 +1,137 @@
+                            {{ form_start(form, {'attr':{'class':'body'}})}}
+                                        <div class="row clearfix">
+                                            <div class="col-md-12 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.anne, {'attr':{type:"text"  ,'class':"form-control"  , 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.nom, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"nom" , 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.prenom, {'attr':{'class':"form-control" ,'placeholder':"prenom" ,'require':"", 'label':'Prenom*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.email, {'attr':{'class':"form-control", 'placeholder':"exemple@gmail.com", 'require':"", 'label':'Email*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.numero, {'attr':{'class':"form-control", 'placeholder':"numero", 'require':"", 'label':'Numero*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+
+                                        <div class="row clearfix">
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.username, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"username" , 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.plainPassword, {'attr':{'class':"form-control" ,'placeholder':"***********" ,'require':"", 'label':'Prenom*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.security, {'attr':{'class':"form-control" ,'placeholder':"***********" ,'require':"", 'label':'ConfirmPassword*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.date_naissance, {'attr':{'class':'datepicker form-control','placeholder':"dd/MM/yyyy", 'require':"", 'label':'Date Naissance*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.lieu_naissance, {'attr':{'class':"form-control", 'placeholder':"Lieu Naisance", 'require':"", 'label':'Lieu Naissance*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.classe, {'attr':{'class':"form-control" ,'placeholder':"classe", 'require':"", 'label':'Classe*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group drop-custum"> 
+                                                        {{ form_row(form.Adress, {'attr':{'class':"form-control show-tick" , 'require':"", 'label':'Diplom*'}}) }}
+                                                </div>        
+                                            </div>
+                                        </div>  
+                                   
+                                        <div class="row clearfix">
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.sexe, {'attr':{'class':"form-control", 'require':""}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        {{ form_row(form.description, {'attr':{'class':"form-control", 'placeholder':"Description", 'require':"", 'label':'Description*'}}) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                        <div class="row clearfix">
+                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                              
+                                                <div class="card mt-2 " style="height: 200px; margin-left: 300px; border-radius: 5%; "  >
+                                                
+                                                    <div class="body">
+               
+                                                            <center>
+                                                            <div class="fallback" style="color: blue;">
+                                                                {{ form_row(form.imageFile, {'attr':{'class':"form-control-file" }}) }}
+                                                            </div>
+                                                            </center>
+                                                        
+                                                    </div>
+                                                </div>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-raised g-bg-blush2">Submit</button>
+                                            <a href="{{ path('secretaire_eleve_liste') }}" class="btn btn-raised btn-default">Cancel</a>
+                                        </div>
+                        {{ form_end(form) }}

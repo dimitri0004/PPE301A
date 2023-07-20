@@ -1,0 +1,67 @@
+<th>Jour</th>
+<th>Matiere</th>
+<th>Professeur</th>
+<th>Classe</th>
+<th>Salle</th>
+<th>Heure </th>
+
+{{ form_start(form ,{'attr':{'class':'body'}})}}
+    <div class="row clearfix">
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    {{ form_row(form.jour, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"code clase" , 'require':""}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    &nbsp; {{ form_row(form.matiere.libelle, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row clearfix" >
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    &nbsp; {{ form_row(form.professeur.libelle, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    &nbsp; {{ form_row(form.classe.libelle, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix" >
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    &nbsp; {{ form_row(form.salle.heure_debut, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="form-group">
+                <div class="form-line">
+                    &nbsp; {{ form_row(form.heure_fin, {'attr':{'class':"form-control" ,'placeholder':"libelle" ,'require':""}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-raised g-bg-blush2">{{ button_label|default('submit') }}</button>
+            <button  class="btn btn-raised btn-default">Cancel</button>
+        </div>
+
+    
+{{ form_end(form) }}
+
+<th>Id</th>
+                                       

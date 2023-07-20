@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+<div class="row clearfix">
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                {{ form_row(form.code, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"code clase" , 'require':""}}) }}
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="row clearfix" >
+    <div class="col-md-12 col-sm-12">
+        <div class="form-group">
+            <div class="form-line">
+                {{ form_row(form.libelle, {'attr':{'class':"form-control" ,'placeholder':"&nbsp;libelle" ,'require':""}}) }}
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-raised g-bg-blush2">{{ button_label|default('submit') }}</button>
+        <button  class="btn btn-raised btn-default">Cancel</button>
+    </div>
+
+    
+{{ form_end(form) }}

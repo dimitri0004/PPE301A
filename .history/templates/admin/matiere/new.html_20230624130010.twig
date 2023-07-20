@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New matiere{% endblock %}
+
+{% block body %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header"> 
+            <h2>Ajouter une matiere</h2>
+            <small class="text-muted">Welcome to Swift application</small>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Basic Information <small>Descrivez vos informations ici...</small> </h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
+                                    <li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <a type="button" href="{{ path('admin_matiere_liste') }}"  class="btn  btn-raised btn-warning waves-effect" style="margin-left: 80%;">Liste Des matiere</a>
+                            {{ include('admin/matiere/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!--***********
+
+
+
+
+{% endblock %}

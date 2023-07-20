@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anne index{% endblock %}
+
+{% block body %}
+    <h1>Anne index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Anne</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for anne in annes %}
+            <tr>
+                <td>{{ anne.id }}</td>
+                <td>{{ anne.code }}</td>
+                <td>{{ anne.anne ? anne.anne|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_anne_show', {'id': anne.id}) }}">show</a>
+                    <a href="{{ path('app_anne_edit', {'id': anne.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_anne_new') }}">Create new</a>
+{% endblock %}

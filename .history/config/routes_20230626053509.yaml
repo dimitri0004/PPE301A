@@ -1,0 +1,8 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+recuperer:
+    path: /secretaire_note_recupere
+    controller: App\Controller\NoteController::recupererEleves
+    methods: [POST]
+

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salle index{% endblock %}
+
+{% block body %}
+    <h1>Salle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <td>{{ salle.id }}</td>
+                <td>{{ salle.code }}</td>
+                <td>{{ salle.libelle }}</td>
+                <td>
+                    <a href="{{ path('admin_salle_supprimer', {'id': salle.id}) }}">supprimer</a>
+                    <a href="{{ path('admin_salle_modifier', {'id': salle.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_salle_ajouter') }}">Create new</a>
+{% endblock %}

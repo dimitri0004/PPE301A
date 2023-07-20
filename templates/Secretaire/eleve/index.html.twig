@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}listee des Eleves{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="alert alert-success">
+    {{ message }}
+</div>
+{% endfor %}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Tout Les Eleves</h2>
+            <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="header">
+                        <h2> Eleve </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle"
+                                    data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i
+                                        class="zmdi zmdi-more-vert"></i> </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <a type="button" href="{{ path('secretaire_eleve_ajouter') }}"
+                        class="btn btn-raised btn-primary waves-effect" style="margin-left:80%">+Ajouter un Eleve</a>
+                    <form action="{{ path('secretaire_eleve_liste') }}" method="get"
+                        style="margin-bottom:30px ;margin-left:30%">
+                        <label for="classe">Classe :</label>
+                        <select name="classe" id="classe" style="border-radius: 20px; height:50px; ">
+                            <option value=""> classes</option>
+                            {% for classe in classes %}
+                            <option value="{{ classe.id }}" {% if classeSelectionnee and
+                                classeSelectionnee.id==classe.id %}selected{% endif %}>
+                                {{ classe.libelle }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <label for="annee">Année :</label>
+                        <select name="annee" id="annee" style="border-radius: 20px; height:50px;">
+                            <option value="">années</option>
+                            {% for annee in annees %}
+                            <option value="{{ annee.id }}" {% if anneeSelectionnee and anneeSelectionnee.id==annee.id
+                                %}selected{% endif %}>
+                                {{ annee.code }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <button type="submit" class="btn btn-primary" style="border-radius: 20px; height:50px;"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="color:white;"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </form>
+                    {{ form_start(form) }}
+                    <div class="d-flex">
+                        {{ form_row(form.recherche,{'attr':{'class':"mt-2 ", 'style':"border-radius: 20px; height:50px;"
+                        ,'placeholder':"recherche par nom" ,'require':"", }})
+                        }}
+                        <button type="submit" class="btn btn-primary" style="border-radius: 20px; height:50px; "
+                            style=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" style="color:white;"
+                                fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg></button>
+                    </div>
+
+                </div>
+            </div>
+            {{ form_end(form) }}
+            {% if eleves is not empty %}
+
+            <div class="body table-responsive">
+                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Profil</th>
+                            <th scope="col">Annee Inscription</th>
+                            <th scope="col">Classe</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">UserName</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Sexe</th>
+                            <th scope="col">Fonction</th>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for eleve in eleves %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td><img class="bd-placeholder-img rounded-circle"
+                                    src="{{ asset('images/users/') ~ eleve.imageName  }}" width="60" height="60"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="var(--bs-secondary-color)" /></img>
+                            </td>
+                            <td>{{ eleve.anne.code }}</td>
+                            <td>{{ eleve.classe.libelle }}</td>
+                            <td>{{ eleve.nom }}</td>
+                            <td>{{ eleve.prenom }}</td>
+                            <td>{{ eleve.email }}</td>
+                            <td>{{ eleve.username }}</td>
+                            <td>{{ eleve.security }}</td>
+                            <td>{{ eleve.sexe }}</td>
+                            <td><button class="btn bg-orange waves-effect" type="button">{{ eleve.fonction }} </td>
+                            <td>{{ eleve.numero }}</td>
+                            <div class="col-sm-12">
+                                <td style="display: flex;">
+                                    <a class="btn btn-success" style="margin-left: 20px; margin-right:20px"
+                                        href=""><strong style="color: white;">voir</strong></a>
+                                    <a href="" style="margin-right: 20px;" class="btn btn-secondary"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                            <path
+                                                d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                        </svg></a>
+
+                                    {{ include('secretaire/eleve/_delete_form.html.twig') }}
+
+                                </td>
+                            </div>
+
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    
+    <!-- #END# Exportable Table -->
+    </div>
+</section>
+
+{% endblock %}

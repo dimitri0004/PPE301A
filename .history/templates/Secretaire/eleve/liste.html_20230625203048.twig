@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<section class="content patients">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="d-sm-flex justify-content-between">
+                <div>
+                    <h2>All Student</h2>
+                    <small class="text-muted">Welcome to Swift application</small>
+                </div>
+                <div>
+                    <a href="add-students.html" class="btn btn-raised btn-primary">Add Student</a>
+                </div>
+            </div>
+        </div>
+        <form action="{{ path('secretaire_eleve_listetrier') }}" method="get">
+            <label for="classe">Classe :</label>
+            <select name="classe" id="classe">
+                <option value="">Toutes les classes</option>
+                {% for classe in classes %}
+                    <option value="{{ classe.id }}">{{ classe.nom }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="annee">Année :</label>
+            <select name="annee" id="annee">
+                <option value="">Toutes les années</option>
+                {% for annee in annees %}
+                    <option value="{{ annee.id }}">{{ annee.annee }}</option>
+                {% endfor %}
+            </select>
+            
+            <button type="submit">Rechercher</button>
+        </form>
+        <div class="row clearfix">
+            {% for eleve in eleves %}
+                
+           
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card all-patients">
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 m-b-0">
+                                <a href="#" class="p-profile-pix"><img style="height: 150px; width: 150px;" src="{{ asset('images/users/') ~ eleve.imageName  }}" alt="user" class="img-thumbnail img-fluid"></a>
+                            </div>
+                            <div class="col-lg-8 col-md-12 m-b-0">
+                                <h5 class="m-b-0">{{ eleve.nom }} - {{ eleve.nom }} <a href="#" class="edit"><i class="zmdi zmdi-edit"></i></a></h5> <small>MCA Sem-5</small>
+                                <address class="m-t-10 m-b-0">
+                                    {{ eleve.classe.libelle }}<br>
+                                    <abbr title="Phone">P:</abbr> {{ eleve.numero }}
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

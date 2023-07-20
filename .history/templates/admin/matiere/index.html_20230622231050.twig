@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matiere index{% endblock %}
+
+{% block body %}
+    <h1>Matiere index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matiere in matieres %}
+            <tr>
+                <td>{{ matiere.id }}</td>
+                <td>{{ matiere.code }}</td>
+                <td>{{ matiere.libelle }}</td>
+                <td>
+                    <a href="{{ path('admin_matiere_liste', {'id': matiere.id}) }}">show</a>
+                    <a href="{{ path('admin_matiere_modifier', {'id': matiere.id}) }}">edit</a>
+                    {{ include('admin/matiere/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_matiere_ajouter') }}">Create new</a>
+{% endblock %}

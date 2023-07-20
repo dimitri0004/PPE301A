@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Eleve{% endblock %}
+
+{% block body %}
+    
+
+    {{ include('secretaire/eleve/_form.html.twig') }}
+
+    <a href="{{ path('secretaire_eleve_liste') }}">Cancel</a>
+{% endblock %}
