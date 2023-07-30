@@ -1,0 +1,189 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+
+    
+        <div class="page-header">
+          <div class="row">
+            <div class="col">
+              <h3 class="page-title">Profile</h3>
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Profile</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="profile-header">
+              <div class="row align-items-center">
+                <div class="col-auto profile-image">
+                  <a href="#">
+                    <img
+                      class="rounded-circle"
+                      alt="User Image"
+                      src="{{ asset('images/users/') ~ eleve.imageName  }}"
+                    />
+                  </a>
+                </div>
+                <div class="col ms-md-n2 profile-user-info">
+                  <h4 class="user-name mb-0">{{ eleve.username }}</h4>
+                  <h6 class="text-muted">UI/UX Design Team</h6>
+                  <div class="user-Location">
+                    <i class="fas fa-map-marker-alt"></i> Florida, United
+                    States
+                  </div>
+                  <div class="about-text">Lorem ipsum dolor sit amet.</div>
+                </div>
+                <div class="col-auto profile-btn">
+                  <a href class="btn btn-primary"> Edit </a>
+                </div>
+              </div>
+            </div>
+            <div class="profile-menu">
+              <ul class="nav nav-tabs nav-tabs-solid">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    data-bs-toggle="tab"
+                    href="#per_details_tab"
+                    >About</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    data-bs-toggle="tab"
+                    href="#password_tab"
+                    >Password</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content profile-tab-cont">
+              <div class="tab-pane fade show active" id="per_details_tab">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between">
+                          <span>Personal Details</span>
+                          <a
+                            class="edit-link"
+                            data-bs-toggle="modal"
+                            href="#edit_personal_details"
+                            ><i class="far fa-edit me-1"></i>Edit</a
+                          >
+                        </h5>
+                        <div class="row">
+                          <p
+                            class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                          >
+                            Nom
+                          </p>
+                          <p class="col-sm-9">{{ eleve.nom }}</p>
+                        </div>
+                        <div class="row">
+                            <p
+                              class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                            >
+                              Prenom
+                            </p>
+                            <p class="col-sm-9">{{ eleve.prenom }}</p>
+                          </div>
+                        <div class="row">
+                          <p
+                            class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                          >
+                            Date de Naissance
+                          </p>
+                          <p class="col-sm-9">{{ eleve.dateNaissance|date('Y-m-d')  }}</p>
+                        </div>
+                        <div class="row">
+                            <p
+                              class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                            >
+                              Lieu de Naissance
+                            </p>
+                            <p class="col-sm-9">{{ eleve.lieuNaissance }}</p>
+                          </div>
+                        <div class="row">
+                          <p
+                            class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                          >
+                          Email Proffessionel
+                        </p>
+                        <p class="col-sm-9">{{ eleve.email }}</p>
+                          </p>
+                        </div>
+                        <div class="row">
+                          <p
+                            class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                          >
+                          Telephone
+                          </p>
+                          <p class="col-sm-9">{{ eleve.numero }}</p>
+                        </div>
+                        <div class="row">
+                          <p class="col-sm-3 text-muted text-sm-end mb-0">
+                            Address
+                          </p>
+                          <p class="col-sm-9 mb-0">
+                            {{ eleve.adress }}
+                          </p>
+                        </div>
+                        <div class="row">
+                            <p
+                              class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                            >
+                            Sexe
+                          </p>
+                          <p class="col-sm-9">{{ eleve.sexe }}</p>
+                            </p>
+                          </div>
+                          <div class="row">
+                            <p
+                              class="col-sm-3 text-muted text-sm-end mb-0 mb-sm-3"
+                            >
+                            Password
+                          </p>
+                          <p class="col-sm-9">{{ eleve.security }}</p>
+                            </p>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title d-flex justify-content-between">
+                          <span>Information Scolaire</span>
+                          Classe
+                            </p>
+                            <p class="col-sm-9">{{ eleve.classe.libelle }}</p>
+                        </h5>
+                        
+                      </div>
+                    </div>
+
+                    
+                  </div>
+                </div>
+              </div>
+
+              
+            </div>
+  
+
+  <script
+    data-cfasync="false"
+    src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+  ></script>
+{% endblock %}

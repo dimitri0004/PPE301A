@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <title>:: Swift - University Admin ::</title>
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+        <link rel="stylesheet" href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- Custom Css -->
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('assets/css/themes/all-themes.css') }}"/>
+        <link href="{{ asset('assets/plugins/dropzone/dropzone.css') }}" rel="stylesheet">
+        <!-- Bootstrap Material Datetime Picker Css -->
+        <link href="{{ asset('assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css') }}" rel="stylesheet" />
+        <!-- Wait Me Css -->
+        <link href="{{ asset('assets/plugins/waitme/waitMe.css') }}" rel="stylesheet" />
+        
+        <link rel="stylesheet" href="{{ asset('assets/css/themes/all-themes.css') }}"/>
+        <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
+        
+        <link href="{{ asset('assets/plugins/morrisjs/morris.css') }}" rel="stylesheet" />
+        
+        <!-- Multi Select Css -->
+        <link href="{{ asset('assets/plugins/multi-select/css/multi-select.css') }}" rel="stylesheet">
+        <!-- Bootstrap Spinner Css -->
+        <link href="{{ asset('assets/plugins/jquery-spinner/css/bootstrap-spinner.css') }}" rel="stylesheet">
+        <!-- Bootstrap Tagsinput Css -->
+        <link href="{{ asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css') }}" rel="stylesheet">
+        <!-- Bootstrap Select Css -->
+        <!-- noUISlider Css -->
+        <link href="{{ asset('assets/plugins/nouislider/nouislider.min.css') }}" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {% block javascripts %}
+
+        <script src="{{ asset('assets/bundles/libscripts.bundle.js') }}"  defer></script> <!-- Lib Scripts Plugin Js -->
+        <script src="{{ asset('assets/bundles/vendorscripts.bundle.js') }}" defer></script> <!-- Lib Scripts Plugin Js -->
+        <script src="{{ asset('assets/bundles/morphingsearchscripts.bundle.js') }}" defer></script> <!-- Main top morphing search -->
+
+        <script src="{{ asset('assets/plugins/jquery-sparkline/jquery.sparkline.min.js') }}" defer></script> <!-- Sparkline Plugin Js -->
+        <script src="{{ asset('assets/plugins/chartjs/Chart.bundle.min.js') }}" defer></script> <!-- Chart Plugins Js --> 
+
+        <script src="{{ asset('assets/bundles/mainscripts.bundle.js') }}" defer></script><!-- Custom Js --> 
+        <script src="{{ asset('assets/js/pages/charts/sparkline.min.js') }}" defer></script> 
+        <script src="{{ asset('assets/js/pages/index.js') }}"></script>
+
+            
+        <script src="{{ asset('assets/plugins/autosize/autosize.js') }}" defer></script> <!-- Autosize Plugin Js --> 
+        <script src="{{ asset('assets/plugins/momentjs/moment.js') }}" defer></script> <!-- Moment Plugin Js --> 
+        <script src="{{ asset('assets/plugins/dropzone/dropzone.js') }}" defer></script> <!-- Dropzone Plugin Js -->
+        <!-- Bootstrap Material Datetime Picker Plugin Js --> 
+        <script src="{{ asset('assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js') }}" defer></script> 
+
+        
+        <script src="{{ asset('assets/js/pages/forms/basic-form-elements.js') }}" defer></script>
+
+
+        <script src="{{ asset('assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js') }}"></script> <!-- Bootstrap Colorpicker Js --> 
+    
+        <script src="{{ asset('assets/plugins/jquery-inputmask/jquery.inputmask.bundle.js') }}"></script> <!-- Input Mask Plugin Js --> 
+        <script src="{{ asset('assets/plugins/multi-select/js/jquery.multi-select.js') }}"></script> <!-- Multi Select Plugin Js --> 
+        <script src="{{ asset('assets/plugins/jquery-spinner/js/jquery.spinner.js') }}"></script> <!-- Jquery Spinner Plugin Js --> 
+        <script src="{{ asset('assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js') }}"></script> <!-- Bootstrap Tags Input Plugin Js --> 
+        <script src="{{ asset('assets/plugins/nouislider/nouislider.js') }}"></script> <!-- noUISlider Plugin Js --> 
+
+        <script src="{{ asset('assets/js/pages/forms/advanced-form-elements.js') }}"></script>
+     {% endblock %}  
+    </head>
+    <body>
+        
+          
+        {% if app.user %}
+        
+            {% if app.user.fonction=='Admin' %}
+                {% include "_partiels/_nav.html.twig" %}
+            {% elseif app.user.fonction=='Directeur' %}
+                {% include "_partiels/_navDirecteur.html.twig" %}
+            {% elseif app.user.fonction=='Secretaire' %}
+                {% include "_partiels/_navSecretaire.html.twig" %}    
+            {% else %}
+            {% elseif app.user.fonction=='Comptable' %}
+                {% include "_partiels/_navComptable.html.twig" %} 
+                <p></p>
+            {% endif %}    
+        {% endif %}    
+            
+            {% block body %}{% endblock %}
+                               
+                       
+                       
+    </body>
+</html>
