@@ -37,10 +37,13 @@ class ProfilController extends AbstractController
 
     
     #[Route('/profil/modifier', name: 'profil_modifier')]
-    public function modifierProfil(Request $request,EleveRepository $eleveRepository,UserPasswordHasherInterface $userPasswordHasher, EleveRepository $EleveRepository, EntityManagerInterface $entityManagerInterface): Response
+    public function modifierProfil(Request $request,Eleve $eleve,UserPasswordHasherInterface $userPasswordHasher, EleveRepository $EleveRepository, EntityManagerInterface $entityManagerInterface): Response
     {
-        $Eleve = $this->getUser();
-        $form = $this->createForm(EleveType::class, $Eleve);
+        $eleve = $this->getUser();
+
+        
+
+        $form = $this->createForm(EleveType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,7 +54,7 @@ class ProfilController extends AbstractController
                 $form->get('security')->addError(new FormError('Les champs "Mot de passe" et "Confirmation du mot de passe" doivent être identiques.'));
             }else{
             
-            $entityManagerInterface->persist($Eleve);
+            $entityManagerInterface->persist($eleve);
             $entityManagerInterface->flush();
             $this-> addFlash('success', 'vos information on été modifier avec succes');
 
@@ -64,7 +67,7 @@ class ProfilController extends AbstractController
         }
         }
         return $this->render('eleve/profil/modifier.html.twig', [
-            'eleve' => $Eleve,
+            'eleve' => $eleve,
             'form' => $form->createView(),
         ]);
     }

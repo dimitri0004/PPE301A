@@ -3,7 +3,6 @@
 namespace App\Controller\Eleve;
 
 use App\Entity\Eleve;
-use App\Form\EleveType;
 use App\Repository\EleveRepository;
 use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
@@ -37,10 +36,15 @@ class ProfilController extends AbstractController
 
     
     #[Route('/profil/modifier', name: 'profil_modifier')]
-    public function modifierProfil(Request $request,EleveRepository $eleveRepository,UserPasswordHasherInterface $userPasswordHasher, EleveRepository $EleveRepository, EntityManagerInterface $entityManagerInterface): Response
+    public function modifierProfil(Request $request,Eleve $Eleve,UserPasswordHasherInterface $userPasswordHasher, EleveRepository $EleveRepository, EntityManagerInterface $entityManagerInterface): Response
     {
-        $Eleve = $this->getUser();
-        $form = $this->createForm(EleveType::class, $Eleve);
+        $eleve = $this->getUser();
+
+        if (!$eleve instanceof Eleve) {
+            throw $this->createNotFoundException('Élève introuvable.');
+        }
+
+        $form = $this->createForm(EleveType::class, $eleve);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,21 +54,31 @@ class ProfilController extends AbstractController
             if ($password !== $security) {
                 $form->get('security')->addError(new FormError('Les champs "Mot de passe" et "Confirmation du mot de passe" doivent être identiques.'));
             }else{
+            $Eleve->setFonction('Eleve');
+
+            $Eleve->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $Eleve,
+                    $form->get('plainPassword')->getData()
+                    )
+                );
             
+            $Eleve->setSecurity($security);
+            $Eleve->setRoles(['ROLE_ELEVE']);
             $entityManagerInterface->persist($Eleve);
             $entityManagerInterface->flush();
             $this-> addFlash('success', 'vos information on été modifier avec succes');
 
             
 
-           return $this->redirectToRoute('eleve_profil');
+           return $this->redirectToRoute('secretaire_eleve_liste');
             #$eleveRepository->save($eleve, true);
 
             #return $this->redirectToRoute('secretaire_eleve_liste', [], Response::HTTP_SEE_OTHER);
         }
         }
         return $this->render('eleve/profil/modifier.html.twig', [
-            'eleve' => $Eleve,
+            'eleve' => $eleve,
             'form' => $form->createView(),
         ]);
     }

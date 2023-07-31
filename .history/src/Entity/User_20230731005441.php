@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 
-
+use Serializable;
 use Doctrine\ORM\Mapping as ORM;
 
 use App\Repository\UserRepository;
@@ -29,9 +29,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 
 #[ORM\Table(name: '`user`')]
-#[UniqueEntity(fields: ['email'], message: 'Cet email est deja attribuer a un autre compte')]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[Vich\Uploadable]
-class User implements UserInterface, PasswordAuthenticatedUserInterface 
+class User implements Serializable, UserInterface, PasswordAuthenticatedUserInterface 
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -214,6 +214,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
     
 
-    
+    public function serialize(): string
+    {
+        return serialize([
+            $this->id,
+            $this->email,
+            // Ajoutez d'autres propriétés que vous souhaitez sérialiser ici
+        ]);
+    }
+
+    public function unserialize($serialized): void
+    {
+        [
+            $this->id,
+            $this->email,
+            // Ajoutez d'autres propriétés que vous souhaitez désérialiser ici
+        ] = unserialize($serialized);
+    }
 
 }

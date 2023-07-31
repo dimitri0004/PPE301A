@@ -50,7 +50,14 @@ class ProfilController extends AbstractController
             if ($password !== $security) {
                 $form->get('security')->addError(new FormError('Les champs "Mot de passe" et "Confirmation du mot de passe" doivent être identiques.'));
             }else{
+            $eleveRepository->setFonction('Eleve');
+
+            $eleveRepository->setPassword(
+                
+                );
             
+            $eleveRepository->setSecurity($security);
+            $eleveRepository->setRoles(['ROLE_ELEVE']);
             $entityManagerInterface->persist($Eleve);
             $entityManagerInterface->flush();
             $this-> addFlash('success', 'vos information on été modifier avec succes');
