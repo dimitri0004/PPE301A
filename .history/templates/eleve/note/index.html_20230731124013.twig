@@ -1,0 +1,72 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %}Hello EmploiController!{% endblock %}
+
+{% block body %}
+
+<div class="page-header">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Les notes</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a >Les notes de tes differents appréciation sont disponible ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    {{ form_start(form) }}    
+    <div class="d-flex" style="margin-left:80%; margin-bottom:20px" >                
+        {{ form_row(form.classe,{'attr': {'class': 'form-control me-2','label':'Classe'}}) }}
+        <button type="submit" style="height: 50px; margin-top:28px;  background-color:rgb(0, 123, 255)" class="btn btn-secondary"><strong style="color: white;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></strong>
+        </button>  
+    </div>
+        
+    {{ form_end(form) }}
+
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card card-table comman-shadow">
+            <div class="card-body">
+              <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="table-responsive">
+                        <table
+                        class="table border-0 star-student table-hover table-center mb-0 datatable table-striped"
+                        >
+                    
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Trimestre</th>
+                                <th scope="col">Type d'Evaluation</th>
+                                <th scope="col">Matiere</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Coefficient</th>
+                                <th scope="col">Appréciation</th>
+                                
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            {% for note in notes %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ note.date|date('d-m-Y') }}</td>
+                                    <td>{{ note.Trimestre }}</td>
+                                    <td>{{ note.typeEvaluation}}</td>
+                                    <td>{{ note.Matiere.libelle }}</td>
+                                    <td>{{ note.note }}</td>
+                                    <td>{{ note.coefficient }}</td>
+                                    <td>{{ note.mention }}</td>
+                                    
+                                    
+                                </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+
+{% endblock %}

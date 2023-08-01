@@ -1,0 +1,64 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %}Hello EmploiController!{% endblock %}
+
+{% block body %}
+
+<div class="page-header">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="page-sub-header">
+          <h3 class="page-title">Les notes</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a >Les notes de tes differents appréciation sont disponible ici</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+    <div class="row">
+        <div class="col-sm-12">
+          <div class="card card-table comman-shadow">
+            <div class="card-body">
+              <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="">
+                        <table
+                        class="table border-2 star-student table-hover table-center mb-0 datatable table-striped"
+                        >
+                    
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Trimestre</th>
+                                <th scope="col">Type d'Evaluation</th>
+                                <th scope="col">Matiere</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Coefficient</th>
+                                <th scope="col">Appréciation</th>
+                                
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            {% for note in notes %}
+                                <tr>
+                                    <th scope="row">{{ loop.index }}</th>
+                                    <td>{{ note.date|date('d-m-Y') }}</td>
+                                    <td>{{ note.Trimestre }}</td>
+                                    <td>{{ note.typeEvaluation}}</td>
+                                    <td>{{ note.Matiere.libelle }}</td>
+                                    <td>{{ note.note }}</td>
+                                    <td>{{ note.coefficient }}</td>
+                                    <td>{{ note.mention }}</td>
+                                    
+                                    
+                                </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                    </table>
+
+{% endblock %}

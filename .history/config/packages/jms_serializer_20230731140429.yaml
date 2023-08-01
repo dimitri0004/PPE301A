@@ -1,0 +1,49 @@
+jms_serializer:
+    visitors:
+        xml_serialization:
+            format_output: '%kernel.debug%'
+#    metadata:
+#        auto_detection: false
+#        directories:
+#            any-name:
+#                namespace_prefix: "My\\FooBundle"
+#                path: "@MyFooBundle/Resources/config/serializer"
+#            another-name:
+#                namespace_prefix: "My\\BarBundle"
+#                path: "@MyBarBundle/Resources/config/serializer"
+
+    metadata:
+        directories:
+            App:
+                namespace_prefix: 'App'
+                path: '%kernel.project_dir%/src/Entity'
+        exclusion_policy: ALL
+        default_exclusion_strategy: none
+        handlers:
+            datetime:
+                default_format: 'Y-m-d H:i:s'
+        classMetadata:
+            'App\Entity\User':
+                exclusion_policy: ALL
+                properties:
+                    imageFile:
+                        expose: false
+                    updatedAt:
+                        expose: false
+
+when@prod:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION
+
+when@dev:
+    jms_serializer:
+        visitors:
+            json_serialization:
+                options:
+                    - JSON_PRETTY_PRINT
+                    - JSON_UNESCAPED_SLASHES
+                    - JSON_PRESERVE_ZERO_FRACTION
