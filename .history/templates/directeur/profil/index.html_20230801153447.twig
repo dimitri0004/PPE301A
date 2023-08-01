@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+<section class="content profile-page">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2> Profile</h2>
+            <small class="text-muted">Welcome to Swift Academy application</small>
+        </div>        
+        <div class="row clearfix">
+            <div class="col">
+                <div class=" card">
+                    <img src="{{ asset('images/users/') ~ secretaire.imageName  }}" class="img-fluid" alt="">                              
+                </div>
+                <div class="card">
+                    <div class="header">
+                        <h2>About Secretaire</h2>
+                    </div>
+                    <div class="body">
+                        
+                        <p>{{ secretaire.username }}</p> 
+                        <strong>Email ID</strong>
+                        <p>{{ secretaire.email }}</p>
+                        
+                        <hr>
+                        <strong>Sexe</strong>
+                        <p>{{ secretaire.fonction}}</p>
+                        <hr>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

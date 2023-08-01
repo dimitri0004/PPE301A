@@ -1,32 +1,33 @@
 <?php
 
-namespace App\Controller\Secretaire;
+namespace App\Controller\admin;
 
-
+use App\Repository\AdminRepository;
 use App\Repository\EmployerRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\DirecteurRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/secretaire',name: 'secretaire_')]
+#[Route('/admin',name: 'admin_')]
 class ProfilController extends AbstractController
 {
     
     #[Route('/profil', name: 'profil')]
-    public function profil(EmployerRepository $employerRepository): Response
+    public function profil(AdminRepository $adminRepository): Response
    
     {
         
         $employerId = $this->getUser();
 
         // Récupérer l'élève connecté à partir de son ID en utilisant le repository
-        $secretaire = $employerRepository->find($employerId);
+        $secretaire = $adminRepository->find($employerId);
 
         if (!$secretaire) {
-            throw $this->createNotFoundException('Secretaire introuvable.');
+            throw $this->createNotFoundException('Administrateur introuvable.');
         }
 
-        return $this->render('secretaire/profil/index.html.twig', [
+        return $this->render('admin/profil/index.html.twig', [
             'secretaire' => $secretaire,
         ]);
     }
