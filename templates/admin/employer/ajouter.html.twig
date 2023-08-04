@@ -11,18 +11,18 @@
         </div>
     {% endfor %}
    
-    <section class="content">
+   <section class="content">
         <div class="container-fluid">
             <div class="block-header">
-                <h2>Ajouter un Professeur</h2>
-                <small class="text-muted">Bienvenu dans Scool application</small>
+                <h2>Add Employee</h2>
+                <small class="text-muted">Welcome to Swift application</small>
             </div>
 
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Basic Information <small>Decrivez vos information ici ...</small> </h2>
+                            <h2>Basic Information <small>Decribe your informations here...</small> </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
                                     <ul class="dropdown-menu pull-right">
@@ -33,7 +33,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <a type="button" href="{{ path('admin_employer_liste') }}" class="btn  btn-raised btn-warning waves-effect" style="margin-left: 80%;">Liste Des Autres Employer</a>
+                        <a type="button" href="{{ path('admin_employer_liste') }}" class="btn  btn-raised btn-warning waves-effect" style="margin-left: 80%;">List  Of Employees</a>
                                {% if form_errors(form.security) %}
                                     <div class="alert alert-danger">
                                     {{ form_errors(form.security) }}
@@ -46,7 +46,7 @@
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    {{ form_row(form.fonction, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"fonction" , 'require':""}}) }}
+                                                    {{ form_row(form.fonction, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"function" , 'require':""}}) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -56,14 +56,14 @@
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    {{ form_row(form.nom, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"nom" , 'require':""}}) }}
+                                                    {{ form_row(form.nom, {'attr':{'type':"text"  ,'class':"form-control" ,'placeholder':"LastName" , 'require':""}}) }}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    {{ form_row(form.prenom, {'attr':{'class':"form-control" ,'placeholder':"prenom" ,'require':"", 'label':'Prenom*'}}) }}
+                                                    {{ form_row(form.prenom, {'attr':{'class':"form-control" ,'placeholder':"FirstName" ,'require':"", 'label':'FirstName*'}}) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -72,14 +72,14 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.email, {'attr':{'class':"form-control", 'placeholder':"exemple@gmail.com", 'require':"", 'label':'Email*'}}) }}
+                                                        {{ form_row(form.email, {'attr':{'class':"form-control", 'placeholder':"example@gmail.com", 'require':"", 'label':'Email*'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.numero, {'attr':{'class':"form-control", 'placeholder':"numero", 'require':"", 'label':'Numero*'}}) }}
+                                                        {{ form_row(form.numero, {'attr':{'class':"form-control", 'placeholder':"Number", 'require':"", 'label':'Number*'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                             <div class="col-md-4 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.username, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"username" , 'require':""}}) }}
+                                                        {{ form_row(form.username, {'attr':{type:"text"  ,'class':"form-control" ,'placeholder':"UserName" , 'require':""}}) }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,14 +113,14 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.dateNaissance, {'attr':{'class':'datepicker form-control', 'require':"", 'label':'Date Naissance*'}}) }}
+                                                        {{ form_row(form.dateNaissance, {'attr':{'class':'form-control','placeholder':"dd/mm/yyyy", 'require':"", 'label':'Birthday*'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.lieuNaissance, {'attr':{'class':"form-control", 'placeholder':"Lieu Naisance", 'require':"", 'label':'Lieu Naissance*'}}) }}
+                                                        {{ form_row(form.lieuNaissance, {'attr':{'class':"form-control", 'placeholder':"Birth Place", 'require':"", 'label':'Birth Place*'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,13 +129,13 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.Domaine, {'attr':{'class':"form-control" ,'placeholder':"domain", 'require':"", 'label':'Domaine*'}}) }}
+                                                        {{ form_row(form.Domaine, {'attr':{'class':"form-control" ,'placeholder':"Domain", 'require':"", 'label':'Domain*'}}) }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group drop-custum"> 
-                                                        {{ form_row(form.diplome, {'attr':{'class':"form-control show-tick" , 'require':"", 'label':'Diplom*'}}) }}
+                                                        {{ form_row(form.diplome, {'attr':{'class':"form-control show-tick" , 'require':"", 'label':'Diploma*'}}) }}
                                                 </div>        
                                             </div>
                                         </div>  
@@ -154,7 +154,7 @@
                                             <div class="col-md-6 col-sm-12">
                                                 <div class="form-group">
                                                     <div class="form-line">
-                                                        {{ form_row(form.adress, {'attr':{'class':"form-control",'placeholder':"adress", 'require':""}}) }}
+                                                        {{ form_row(form.adress, {'attr':{'class':"form-control",'placeholder':"Adress", 'require':""}}) }}
                                                     </div>
                                                 </div>
                                                 
@@ -200,6 +200,5 @@
                         </div>
                         </div>
         <!--***********
-    
 
 {% endblock %}

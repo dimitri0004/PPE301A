@@ -12,7 +12,7 @@
 <section class="content">
     <div class="container-fluid">
         <div class="block-header">
-            <h2>Tout Les Eleves</h2>
+            <h2>All Students</h2>
             <small>Taken from <a href="https://datatables.net/" target="_blank">datatables.net</a></small>
         </div>
 
@@ -20,7 +20,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="header">
-                        <h2> Eleve </h2>
+                 
                         <ul class="header-dropdown">
                             <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i
@@ -34,12 +34,12 @@
                         </ul>
                     </div>
                     <a type="button" href="{{ path('secretaire_eleve_ajouter') }}"
-                        class="btn btn-raised btn-primary waves-effect" style="margin-left:80%">+Ajouter un Eleve</a>
+                        class="btn btn-raised btn-primary waves-effect" style="margin-left:80%">Add Student</a>
                     <form action="{{ path('secretaire_eleve_liste') }}" method="get"
                         style="margin-bottom:30px ;margin-left:30%">
-                        <label for="classe">Classe :</label>
+                  
                         <select name="classe" id="classe" style=" height:40px; ">
-                            <option value=""> classes</option>
+                            <option value=""> Classes</option>
                             {% for classe in classes %}
                             <option value="{{ classe.id }}" {% if classeSelectionnee and
                                 classeSelectionnee.id==classe.id %}selected{% endif %}>
@@ -47,9 +47,9 @@
                             {% endfor %}
                         </select>
 
-                        <label for="annee">Année :</label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <select name="annee" id="annee" style=" height:40px;">
-                            <option value="">années</option>
+                            <option value="">Years</option>
                             {% for annee in annees %}
                             <option value="{{ annee.id }}" {% if anneeSelectionnee and anneeSelectionnee.id==annee.id
                                 %}selected{% endif %}>
@@ -86,18 +86,18 @@
                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Profil</th>
-                            <th scope="col">Annee Inscription</th>
+                           <th scope="col">Id</th>
+                            <th scope="col">Profile</th>
+                            <th scope="col">Year of Registration</th>
                             <th scope="col">Classe</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prenom</th>
+                            <th scope="col">LastName</th>
+                            <th scope="col">FirstName</th>
                             <th scope="col">Email</th>
                             <th scope="col">UserName</th>
                             <th scope="col">Password</th>
                             <th scope="col">Sexe</th>
-                            <th scope="col">Fonction</th>
-                            <th scope="col">Numero</th>
+                            <th scope="col">Function</th>
+                            <th scope="col">Number</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -148,7 +148,7 @@
                 </table>
             </div>
             {% else %}
-                <p>Aucun eleve ne correspond a ce nom</p>
+                <p>no records found</p>
             {% endif %}
         </div>
     
